@@ -3,31 +3,25 @@ import pygame
 
 def check_keydown_events(event, ship):
     """Respond to key press."""
-    if event.key == pygame.K_d:
+    if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
         ship.moving_right = True
-    elif event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_a:
-            ship.moving_left = True
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
-                ship.moving_up = True
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
-                    ship.moving_down = True
+    if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+        ship.moving_left = True
+    if event.key == pygame.K_w or event.key == pygame.K_UP:
+        ship.moving_up = True
+    if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+        ship.moving_down = True
 
 def check_keyup_events(event, ship):
     """Respond to key release"""
-    if event.key == pygame.K_d:
+    if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
         ship.moving_right = False
-    elif event.type == pygame.KEYUP:
-        if event.key == pygame.K_a:
-            ship.moving_left = False
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_w:
-                ship.moving_up = False
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_s:
-                    ship.moving_down = False
+    if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+        ship.moving_left = False
+    if event.key == pygame.K_w or event.key == pygame.K_UP:
+        ship.moving_up = False
+    if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+        ship.moving_down = False
 
 def check_events(ship):
     # Watch for keyboard and mouse events
