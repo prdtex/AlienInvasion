@@ -6,25 +6,26 @@ def check_keydown_events(event, ai_settings, screen, ship, bullets):
     """Respond to key press."""
     if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
         ship.moving_right = True
-    if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+    elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
         ship.moving_left = True
-    if event.key == pygame.K_w or event.key == pygame.K_UP:
+    elif event.key == pygame.K_w or event.key == pygame.K_UP:
         ship.moving_up = True
-    if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+    elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
         ship.moving_down = True
     elif event.key == pygame.K_SPACE or event.key == pygame.K_KP_ENTER:
-        new_bullet = Bullet(ai_settings, screen, ship)
-        bullets.add(new_bullet)
+        fire_bullets(ai_settings, screen, ship, bullets)
+    elif event.key == pygame.K_ESCAPE:
+        sys.exit()
 
 def check_keyup_events(event, ship):
     """Respond to key release"""
     if event.key == pygame.K_d or event.key == pygame.K_RIGHT:
         ship.moving_right = False
-    if event.key == pygame.K_a or event.key == pygame.K_LEFT:
+    elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
         ship.moving_left = False
-    if event.key == pygame.K_w or event.key == pygame.K_UP:
+    elif event.key == pygame.K_w or event.key == pygame.K_UP:
         ship.moving_up = False
-    if event.key == pygame.K_s or event.key == pygame.K_DOWN:
+    elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
         ship.moving_down = False
 
 def check_events(ai_settings, screen, ship, bullets):
@@ -53,3 +54,14 @@ def update_screen(ai_settings, screen, ship, bullets):
     # Make the most recently drawn screen visible
     pygame.display.flip()
 
+def fire_bullets(ai_settings, screen, ship, bullets):
+    new_bullet = Bullet(ai_settings, screen, ship)
+    bullets.add(new_bullet)
+
+def update_bullets(bullets):
+    bullets.update()
+
+    # Remove bullets that are off screen
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
