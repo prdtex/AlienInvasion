@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9833b188-cc4d-4327-b575-7551406ba7c4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alien.py" beforeDir="false" afterPath="$PROJECT_DIR$/alien.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alien_invasion.py" beforeDir="false" afterPath="$PROJECT_DIR$/alien_invasion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/game_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,9 +67,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581199253834" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581787985693">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1581792449531">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581787985693" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581792449531" />
   </component>
 </project>

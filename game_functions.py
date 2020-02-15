@@ -40,7 +40,6 @@ def check_events(ai_settings, screen, ship, bullets):
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
 
-
 def update_screen(ai_settings, screen, ship, aliens, bullets):
     """Update images on screen and flip to the new screen."""
     # Set the background color
@@ -61,13 +60,25 @@ def fire_bullets(ai_settings, screen, ship, bullets):
     new_bullet = Bullet(ai_settings, screen, ship)
     bullets.add(new_bullet)
 
-def update_bullets(bullets):
+def update_bullets(ai_settings, screen, ship, aliens, bullets):
     bullets.update()
 
     # Remove bullets that are off screen
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+
+    check_bullet_alien_collision(ai_settings, screen, ship, aliens)
+
+def check_bullet_alien_collision(ai_settings, screen, ship, bullets, aliens):
+    # Check for any bullets that have hit aliens
+    # If so, get rid of the bullet and alien
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+
+    if len(aliens) == 0:
+        # Destroy existing bullets and create a new fleet
+        bullets.empty()
+        create_fleet(ai_settings, screen, ship, aliens)
 
 def get_number_of_aliens_x(ai_settings, alien_width):
     """Determine the number of aliens that fit in a row"""
@@ -104,3 +115,20 @@ def create_fleet(ai_settings, screen, ship, aliens):
             create_alien(ai_settings, screen, aliens, alien_number, row_number)
 
 
+def check_fleet_edges(ai_settings, aliens):
+    """Respond appropriately if any aliens have reached an edge"""
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(ai_settings, aliens)
+            break
+
+def change_fleet_direction(ai_settings, aliens):
+    """Drop the entire fleet and change the fleet's direction"""
+    for alien in aliens.sprites():
+        alien.rect.y += ai_settings.fleet_drop_speed
+    ai_settings.fleet_direction *= -1
+
+def update_aliens(ai_settings, aliens):
+    """Check if the fleet is at an edge, update positions of all aliens in the fleet"""
+    check_fleet_edges(ai_settings, aliens)
+    aliens.update()
